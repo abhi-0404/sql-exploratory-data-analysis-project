@@ -58,10 +58,25 @@ The dataset consists of multiple relational tables, including:
 2. Load the dataset into your preferred SQL database (MySQL, PostgreSQL, SQL Server, etc.).
 3. Run the SQL queries from !scripts[sql-exploratory-data-analysis-project/scripts] to explore the dataset and extract insights.
 
-## 📈 Sample Insights
-- **Top 10 products contribute to 60% of total sales.**
-- **Customers from Region X have the highest average order value.**
-- **Repeat customers generate 3x more revenue than new customers.**
+## 📈 Questions This Analysis Answers
+
+Each script answers one business question. Restore `datasets/DataWarehouseAnalytics.bak` and run them in order to reproduce every result.
+
+| Question | Script | Technique |
+|---|---|---|
+| What tables and columns does the warehouse contain? | `01_database_exploration` | `INFORMATION_SCHEMA` |
+| Which countries, categories and products exist? | `02_dimension_exploration` | `DISTINCT` |
+| What period does the data cover, and how old are customers? | `03_date_range_exploration` | `MIN`, `MAX`, `DATEDIFF` |
+| What are total sales, orders, quantity and average price? | `04_measure_exploration` | `SUM`, `COUNT`, `AVG` |
+| How are revenue and customers distributed across countries and categories? | `05_magnitude_analysis` | `GROUP BY` |
+| Which products and customers rank highest and lowest? | `06_ranking_analysis` | `RANK`, `DENSE_RANK`, `ROW_NUMBER` |
+| How do sales change month to month and year to year? | `07_change_overtime_analysis` | `DATETRUNC`, `DATEPART` |
+| What are the running totals and moving average prices? | `08_cumulative_analysis` | `SUM() OVER`, `AVG() OVER` |
+| How does each product compare with its own average and last year? | `09_performance_analysis` | `LAG`, `AVG() OVER` |
+| How do customers split into VIP, Regular and New, and products into cost bands? | `10_data_segmentation` | `CASE` |
+| What share of total sales does each category contribute? | `11_part_to_whole_analysis` | `SUM() OVER` |
+| One view per customer: segment, age group, recency, order value, monthly spend | `12_report_customers` | CTEs, segmentation |
+| One view per product: performance band, recency, order revenue, monthly revenue | `13_report_products` | CTEs, segmentation |
 
 ## 🔗 Future Enhancements
 - Integrate with **Power BI/Tableau** for interactive visualizations.
